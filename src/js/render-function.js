@@ -2,7 +2,11 @@ import SimpleLightbox from 'simplelightbox';
 
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const simplelightbox = new SimpleLightbox('.gallery a', {
-  captionData: 'alt',
+  captions: true,
+  captionSelector: 'self',
+  captionType: 'attr',
+  captionsData: 'title',
+  captionPosition: 'bottom',
   captionDelay: 250,
 });
 const galleryELem = document.querySelector('.gallery');
@@ -12,7 +16,7 @@ function createGallery(images) {
     .map(
       image => `
         <li class="gallery-item">
-          <a class="gallery-link" href="${image.largeImageURL}">
+          <a class="gallery-link" href="${image.largeImageURL}" title="${image.tags}">
             <img
               class="gallery-image"
               src="${image.webformatURL}"
