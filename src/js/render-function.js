@@ -6,10 +6,11 @@ const simplelightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 const galleryELem = document.querySelector('.gallery');
+
 function createGallery(images) {
-    const markup = images
-      .map(
-        image => `
+  const markup = images
+    .map(
+      image => `
         <li class="gallery-item">
           <a class="gallery-link" href="${image.largeImageURL}">
             <img
@@ -25,12 +26,24 @@ function createGallery(images) {
             <p><b>Downloads:</b> ${image.downloads}</p>
           </div>
         </li>`
-      )
-        .join('');
-    galleryELem.insertAdjacentHTML('beforeend', markup);
-    simplelightbox.refresh();
+    )
+    .join('');
+  galleryELem.insertAdjacentHTML('beforeend', markup);
+  simplelightbox.refresh();
+}
 
-function clearGallery() {}
-function showLoader() {}
+function clearGallery() {
+  const gallery = document.querySelector('.gallery');
+  gallery.innerHTML = '';
+}
+function showLoader() {
+  const loader = document.querySelector('.loader');
+  loader.classList.remove('is-hidden');
+}
 
-function hideLoader() {}
+function hideLoader() {
+  const loader = document.querySelector('.loader');
+  loader.classList.add('is-hidden');
+}
+
+export { createGallery, clearGallery, showLoader, hideLoader };
