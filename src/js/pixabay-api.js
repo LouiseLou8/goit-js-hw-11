@@ -6,7 +6,7 @@ export async function getImagesByQuery(query) {
   const params = {
     key: API_KEY,
     q: query,
-    imageType: 'photo',
+    image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
   };
